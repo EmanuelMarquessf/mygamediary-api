@@ -10,6 +10,8 @@ const prisma = new PrismaClient({ adapter });
 // Criamos tipos simples para os dados que o Service vai receber do Controller
 interface CreatePlatformInput {
   name: string
+  icon: string
+  color: string
 }
 
 export class PlatformService {
@@ -20,12 +22,14 @@ export class PlatformService {
 
   // Regra para criar um novo jogo
   async createPlatform(data: CreatePlatformInput) {
-    if (data.name) {
+    if (!data.name) {
       throw new Error('Nome é de preenchimento obrigatório.');
     }
     const newGame = await prisma.platform.create({
       data: {
         name: data.name,
+        icon: data.icon,
+        color: data.color
       },
     });
 

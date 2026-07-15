@@ -14,5 +14,16 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  backend:
+    build: . # O ponto indica que o Dockerfile do seu back está nesta mesma pasta
+    container_name: game_diary_backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://dev_user:minha_senha_secreta_123@db:5432/mygamediary_db?schema=public"
+    depends_on:
+      - db
+
 volumes:
   postgres_data:

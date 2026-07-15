@@ -17,6 +17,7 @@ export class GameController {
   // POST /games (Cadastrar um novo jogo)
   async create(req: Request, res: Response) {
     try {
+      console.log("entrou na controller")
       const { title, platformId, status, rating, review } = req.body;
       if (!title || !platformId || !status) {
         return res.status(400).json({ error: 'Título, plataforma e status são obrigatórios!' });

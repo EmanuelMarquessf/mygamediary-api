@@ -6,8 +6,8 @@ const platformService = new PlatformService();
 export class PlatformController {
   async getAll(req: Request, res: Response) {
     try {
-      const games = await platformService.listAllPlatforms();
-      return res.json(games);
+      const platform = await platformService.listAllPlatforms();
+      return res.json(platform);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erro ao buscar plataformas no banco.' });
@@ -17,13 +17,15 @@ export class PlatformController {
   // POST /games (Cadastrar um novo jogo)
   async create(req: Request, res: Response) {
     try {
-      const { name } = req.body;
+      const { name, icon, color } = req.body;
       if (!name) {
         return res.status(400).json({ error: 'Nome é obrigatórios!' });
       }
 
       const newPlatform = await platformService.createPlatform({
-        name
+        name,
+        icon,
+        color
       });
 
       return res.status(201).json(newPlatform);

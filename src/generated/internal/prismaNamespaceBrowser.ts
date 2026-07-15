@@ -73,7 +73,9 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const PlatformScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  icon: 'icon',
+  color: 'color'
 } as const
 
 export type PlatformScalarFieldEnum = (typeof PlatformScalarFieldEnum)[keyof typeof PlatformScalarFieldEnum]
