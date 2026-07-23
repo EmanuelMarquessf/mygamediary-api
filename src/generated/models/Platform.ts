@@ -27,6 +27,7 @@ export type AggregatePlatform = {
 export type PlatformMinAggregateOutputType = {
   id: string | null
   name: string | null
+  slug: string | null
   icon: string | null
   color: string | null
 }
@@ -34,6 +35,7 @@ export type PlatformMinAggregateOutputType = {
 export type PlatformMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  slug: string | null
   icon: string | null
   color: string | null
 }
@@ -41,6 +43,7 @@ export type PlatformMaxAggregateOutputType = {
 export type PlatformCountAggregateOutputType = {
   id: number
   name: number
+  slug: number
   icon: number
   color: number
   _all: number
@@ -50,6 +53,7 @@ export type PlatformCountAggregateOutputType = {
 export type PlatformMinAggregateInputType = {
   id?: true
   name?: true
+  slug?: true
   icon?: true
   color?: true
 }
@@ -57,6 +61,7 @@ export type PlatformMinAggregateInputType = {
 export type PlatformMaxAggregateInputType = {
   id?: true
   name?: true
+  slug?: true
   icon?: true
   color?: true
 }
@@ -64,6 +69,7 @@ export type PlatformMaxAggregateInputType = {
 export type PlatformCountAggregateInputType = {
   id?: true
   name?: true
+  slug?: true
   icon?: true
   color?: true
   _all?: true
@@ -144,6 +150,7 @@ export type PlatformGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type PlatformGroupByOutputType = {
   id: string
   name: string
+  slug: string
   icon: string
   color: string
   _count: PlatformCountAggregateOutputType | null
@@ -172,6 +179,7 @@ export type PlatformWhereInput = {
   NOT?: Prisma.PlatformWhereInput | Prisma.PlatformWhereInput[]
   id?: Prisma.StringFilter<"Platform"> | string
   name?: Prisma.StringFilter<"Platform"> | string
+  slug?: Prisma.StringFilter<"Platform"> | string
   icon?: Prisma.StringFilter<"Platform"> | string
   color?: Prisma.StringFilter<"Platform"> | string
   games?: Prisma.GameListRelationFilter
@@ -181,6 +189,7 @@ export type PlatformWhereInput = {
 export type PlatformOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   color?: Prisma.SortOrder
   games?: Prisma.GameOrderByRelationAggregateInput
@@ -190,6 +199,7 @@ export type PlatformOrderByWithRelationInput = {
 export type PlatformWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   name?: string
+  slug?: string
   AND?: Prisma.PlatformWhereInput | Prisma.PlatformWhereInput[]
   OR?: Prisma.PlatformWhereInput[]
   NOT?: Prisma.PlatformWhereInput | Prisma.PlatformWhereInput[]
@@ -197,11 +207,12 @@ export type PlatformWhereUniqueInput = Prisma.AtLeast<{
   color?: Prisma.StringFilter<"Platform"> | string
   games?: Prisma.GameListRelationFilter
   userGames?: Prisma.UserGameListRelationFilter
-}, "id" | "name">
+}, "id" | "name" | "slug">
 
 export type PlatformOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   color?: Prisma.SortOrder
   _count?: Prisma.PlatformCountOrderByAggregateInput
@@ -215,6 +226,7 @@ export type PlatformScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PlatformScalarWhereWithAggregatesInput | Prisma.PlatformScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Platform"> | string
   name?: Prisma.StringWithAggregatesFilter<"Platform"> | string
+  slug?: Prisma.StringWithAggregatesFilter<"Platform"> | string
   icon?: Prisma.StringWithAggregatesFilter<"Platform"> | string
   color?: Prisma.StringWithAggregatesFilter<"Platform"> | string
 }
@@ -222,6 +234,7 @@ export type PlatformScalarWhereWithAggregatesInput = {
 export type PlatformCreateInput = {
   id?: string
   name: string
+  slug: string
   icon: string
   color: string
   games?: Prisma.GameCreateNestedManyWithoutPlatformsInput
@@ -231,6 +244,7 @@ export type PlatformCreateInput = {
 export type PlatformUncheckedCreateInput = {
   id?: string
   name: string
+  slug: string
   icon: string
   color: string
   games?: Prisma.GameUncheckedCreateNestedManyWithoutPlatformsInput
@@ -240,6 +254,7 @@ export type PlatformUncheckedCreateInput = {
 export type PlatformUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   games?: Prisma.GameUpdateManyWithoutPlatformsNestedInput
@@ -249,6 +264,7 @@ export type PlatformUpdateInput = {
 export type PlatformUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   games?: Prisma.GameUncheckedUpdateManyWithoutPlatformsNestedInput
@@ -258,6 +274,7 @@ export type PlatformUncheckedUpdateInput = {
 export type PlatformCreateManyInput = {
   id?: string
   name: string
+  slug: string
   icon: string
   color: string
 }
@@ -265,6 +282,7 @@ export type PlatformCreateManyInput = {
 export type PlatformUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -272,6 +290,7 @@ export type PlatformUpdateManyMutationInput = {
 export type PlatformUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -279,6 +298,7 @@ export type PlatformUncheckedUpdateManyInput = {
 export type PlatformCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   color?: Prisma.SortOrder
 }
@@ -286,6 +306,7 @@ export type PlatformCountOrderByAggregateInput = {
 export type PlatformMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   color?: Prisma.SortOrder
 }
@@ -293,6 +314,7 @@ export type PlatformMaxOrderByAggregateInput = {
 export type PlatformMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  slug?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   color?: Prisma.SortOrder
 }
@@ -373,6 +395,7 @@ export type PlatformUpdateOneWithoutUserGamesNestedInput = {
 export type PlatformCreateWithoutGamesInput = {
   id?: string
   name: string
+  slug: string
   icon: string
   color: string
   userGames?: Prisma.UserGameCreateNestedManyWithoutPlatformInput
@@ -381,6 +404,7 @@ export type PlatformCreateWithoutGamesInput = {
 export type PlatformUncheckedCreateWithoutGamesInput = {
   id?: string
   name: string
+  slug: string
   icon: string
   color: string
   userGames?: Prisma.UserGameUncheckedCreateNestedManyWithoutPlatformInput
@@ -413,6 +437,7 @@ export type PlatformScalarWhereInput = {
   NOT?: Prisma.PlatformScalarWhereInput | Prisma.PlatformScalarWhereInput[]
   id?: Prisma.StringFilter<"Platform"> | string
   name?: Prisma.StringFilter<"Platform"> | string
+  slug?: Prisma.StringFilter<"Platform"> | string
   icon?: Prisma.StringFilter<"Platform"> | string
   color?: Prisma.StringFilter<"Platform"> | string
 }
@@ -420,6 +445,7 @@ export type PlatformScalarWhereInput = {
 export type PlatformCreateWithoutUserGamesInput = {
   id?: string
   name: string
+  slug: string
   icon: string
   color: string
   games?: Prisma.GameCreateNestedManyWithoutPlatformsInput
@@ -428,6 +454,7 @@ export type PlatformCreateWithoutUserGamesInput = {
 export type PlatformUncheckedCreateWithoutUserGamesInput = {
   id?: string
   name: string
+  slug: string
   icon: string
   color: string
   games?: Prisma.GameUncheckedCreateNestedManyWithoutPlatformsInput
@@ -452,6 +479,7 @@ export type PlatformUpdateToOneWithWhereWithoutUserGamesInput = {
 export type PlatformUpdateWithoutUserGamesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   games?: Prisma.GameUpdateManyWithoutPlatformsNestedInput
@@ -460,6 +488,7 @@ export type PlatformUpdateWithoutUserGamesInput = {
 export type PlatformUncheckedUpdateWithoutUserGamesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   games?: Prisma.GameUncheckedUpdateManyWithoutPlatformsNestedInput
@@ -468,6 +497,7 @@ export type PlatformUncheckedUpdateWithoutUserGamesInput = {
 export type PlatformUpdateWithoutGamesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   userGames?: Prisma.UserGameUpdateManyWithoutPlatformNestedInput
@@ -476,6 +506,7 @@ export type PlatformUpdateWithoutGamesInput = {
 export type PlatformUncheckedUpdateWithoutGamesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
   userGames?: Prisma.UserGameUncheckedUpdateManyWithoutPlatformNestedInput
@@ -484,6 +515,7 @@ export type PlatformUncheckedUpdateWithoutGamesInput = {
 export type PlatformUncheckedUpdateManyWithoutGamesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -531,6 +563,7 @@ export type PlatformCountOutputTypeCountUserGamesArgs<ExtArgs extends runtime.Ty
 export type PlatformSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  slug?: boolean
   icon?: boolean
   color?: boolean
   games?: boolean | Prisma.Platform$gamesArgs<ExtArgs>
@@ -541,6 +574,7 @@ export type PlatformSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type PlatformSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  slug?: boolean
   icon?: boolean
   color?: boolean
 }, ExtArgs["result"]["platform"]>
@@ -548,6 +582,7 @@ export type PlatformSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type PlatformSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  slug?: boolean
   icon?: boolean
   color?: boolean
 }, ExtArgs["result"]["platform"]>
@@ -555,11 +590,12 @@ export type PlatformSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type PlatformSelectScalar = {
   id?: boolean
   name?: boolean
+  slug?: boolean
   icon?: boolean
   color?: boolean
 }
 
-export type PlatformOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "icon" | "color", ExtArgs["result"]["platform"]>
+export type PlatformOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "icon" | "color", ExtArgs["result"]["platform"]>
 export type PlatformInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   games?: boolean | Prisma.Platform$gamesArgs<ExtArgs>
   userGames?: boolean | Prisma.Platform$userGamesArgs<ExtArgs>
@@ -577,6 +613,7 @@ export type $PlatformPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    slug: string
     icon: string
     color: string
   }, ExtArgs["result"]["platform"]>
@@ -1006,6 +1043,7 @@ export interface Prisma__PlatformClient<T, Null = never, ExtArgs extends runtime
 export interface PlatformFieldRefs {
   readonly id: Prisma.FieldRef<"Platform", 'String'>
   readonly name: Prisma.FieldRef<"Platform", 'String'>
+  readonly slug: Prisma.FieldRef<"Platform", 'String'>
   readonly icon: Prisma.FieldRef<"Platform", 'String'>
   readonly color: Prisma.FieldRef<"Platform", 'String'>
 }

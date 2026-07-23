@@ -8,33 +8,29 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 // Criamos tipos simples para os dados que o Service vai receber do Controller
-interface CreatePlatformInput {
+interface CreateGenreInput {
   name: string
   slug: string
-  icon: string
-  color: string
 }
 
-export class PlatformService {
-  async listAllPlatforms() {
-    const platforms = await prisma.platform.findMany({});
-    return platforms;
+export class GenreService {
+  async listAllGenres() {
+    const genres = await prisma.genre.findMany({});
+    return genres;
   }
 
   // Regra para criar um novo jogo
-  async createPlatform(data: CreatePlatformInput) {
+  async createGenre(data: CreateGenreInput) {
     if (!data.name) {
       throw new Error('Nome é de preenchimento obrigatório.');
     }
-    const newPlatform = await prisma.platform.create({
+    const newGenre = await prisma.genre.create({
       data: {
         name: data.name,
         slug: data.slug,
-        icon: data.icon,
-        color: data.color
       },
     });
 
-    return newPlatform;
+    return newGenre;
   }
 }

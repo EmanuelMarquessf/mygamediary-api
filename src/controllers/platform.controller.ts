@@ -17,13 +17,14 @@ export class PlatformController {
   // POST /games (Cadastrar um novo jogo)
   async create(req: Request, res: Response) {
     try {
-      const { name, icon, color } = req.body;
+      const { name, slug, icon, color } = req.body;
       if (!name) {
         return res.status(400).json({ error: 'Nome é obrigatórios!' });
       }
 
       const newPlatform = await platformService.createPlatform({
         name,
+        slug,
         icon,
         color
       });
