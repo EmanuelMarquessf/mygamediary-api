@@ -175,6 +175,7 @@ export type PlatformWhereInput = {
   icon?: Prisma.StringFilter<"Platform"> | string
   color?: Prisma.StringFilter<"Platform"> | string
   games?: Prisma.GameListRelationFilter
+  userGames?: Prisma.UserGameListRelationFilter
 }
 
 export type PlatformOrderByWithRelationInput = {
@@ -183,6 +184,7 @@ export type PlatformOrderByWithRelationInput = {
   icon?: Prisma.SortOrder
   color?: Prisma.SortOrder
   games?: Prisma.GameOrderByRelationAggregateInput
+  userGames?: Prisma.UserGameOrderByRelationAggregateInput
 }
 
 export type PlatformWhereUniqueInput = Prisma.AtLeast<{
@@ -194,6 +196,7 @@ export type PlatformWhereUniqueInput = Prisma.AtLeast<{
   icon?: Prisma.StringFilter<"Platform"> | string
   color?: Prisma.StringFilter<"Platform"> | string
   games?: Prisma.GameListRelationFilter
+  userGames?: Prisma.UserGameListRelationFilter
 }, "id" | "name">
 
 export type PlatformOrderByWithAggregationInput = {
@@ -221,7 +224,8 @@ export type PlatformCreateInput = {
   name: string
   icon: string
   color: string
-  games?: Prisma.GameCreateNestedManyWithoutPlatformInput
+  games?: Prisma.GameCreateNestedManyWithoutPlatformsInput
+  userGames?: Prisma.UserGameCreateNestedManyWithoutPlatformInput
 }
 
 export type PlatformUncheckedCreateInput = {
@@ -229,7 +233,8 @@ export type PlatformUncheckedCreateInput = {
   name: string
   icon: string
   color: string
-  games?: Prisma.GameUncheckedCreateNestedManyWithoutPlatformInput
+  games?: Prisma.GameUncheckedCreateNestedManyWithoutPlatformsInput
+  userGames?: Prisma.UserGameUncheckedCreateNestedManyWithoutPlatformInput
 }
 
 export type PlatformUpdateInput = {
@@ -237,7 +242,8 @@ export type PlatformUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
-  games?: Prisma.GameUpdateManyWithoutPlatformNestedInput
+  games?: Prisma.GameUpdateManyWithoutPlatformsNestedInput
+  userGames?: Prisma.UserGameUpdateManyWithoutPlatformNestedInput
 }
 
 export type PlatformUncheckedUpdateInput = {
@@ -245,7 +251,8 @@ export type PlatformUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
-  games?: Prisma.GameUncheckedUpdateManyWithoutPlatformNestedInput
+  games?: Prisma.GameUncheckedUpdateManyWithoutPlatformsNestedInput
+  userGames?: Prisma.UserGameUncheckedUpdateManyWithoutPlatformNestedInput
 }
 
 export type PlatformCreateManyInput = {
@@ -290,27 +297,77 @@ export type PlatformMinOrderByAggregateInput = {
   color?: Prisma.SortOrder
 }
 
-export type PlatformScalarRelationFilter = {
-  is?: Prisma.PlatformWhereInput
-  isNot?: Prisma.PlatformWhereInput
+export type PlatformListRelationFilter = {
+  every?: Prisma.PlatformWhereInput
+  some?: Prisma.PlatformWhereInput
+  none?: Prisma.PlatformWhereInput
+}
+
+export type PlatformOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type PlatformNullableScalarRelationFilter = {
+  is?: Prisma.PlatformWhereInput | null
+  isNot?: Prisma.PlatformWhereInput | null
 }
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
-export type PlatformCreateNestedOneWithoutGamesInput = {
-  create?: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput>
-  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutGamesInput
+export type PlatformCreateNestedManyWithoutGamesInput = {
+  create?: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput> | Prisma.PlatformCreateWithoutGamesInput[] | Prisma.PlatformUncheckedCreateWithoutGamesInput[]
+  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutGamesInput | Prisma.PlatformCreateOrConnectWithoutGamesInput[]
+  connect?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+}
+
+export type PlatformUncheckedCreateNestedManyWithoutGamesInput = {
+  create?: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput> | Prisma.PlatformCreateWithoutGamesInput[] | Prisma.PlatformUncheckedCreateWithoutGamesInput[]
+  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutGamesInput | Prisma.PlatformCreateOrConnectWithoutGamesInput[]
+  connect?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+}
+
+export type PlatformUpdateManyWithoutGamesNestedInput = {
+  create?: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput> | Prisma.PlatformCreateWithoutGamesInput[] | Prisma.PlatformUncheckedCreateWithoutGamesInput[]
+  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutGamesInput | Prisma.PlatformCreateOrConnectWithoutGamesInput[]
+  upsert?: Prisma.PlatformUpsertWithWhereUniqueWithoutGamesInput | Prisma.PlatformUpsertWithWhereUniqueWithoutGamesInput[]
+  set?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  disconnect?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  delete?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  connect?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  update?: Prisma.PlatformUpdateWithWhereUniqueWithoutGamesInput | Prisma.PlatformUpdateWithWhereUniqueWithoutGamesInput[]
+  updateMany?: Prisma.PlatformUpdateManyWithWhereWithoutGamesInput | Prisma.PlatformUpdateManyWithWhereWithoutGamesInput[]
+  deleteMany?: Prisma.PlatformScalarWhereInput | Prisma.PlatformScalarWhereInput[]
+}
+
+export type PlatformUncheckedUpdateManyWithoutGamesNestedInput = {
+  create?: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput> | Prisma.PlatformCreateWithoutGamesInput[] | Prisma.PlatformUncheckedCreateWithoutGamesInput[]
+  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutGamesInput | Prisma.PlatformCreateOrConnectWithoutGamesInput[]
+  upsert?: Prisma.PlatformUpsertWithWhereUniqueWithoutGamesInput | Prisma.PlatformUpsertWithWhereUniqueWithoutGamesInput[]
+  set?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  disconnect?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  delete?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  connect?: Prisma.PlatformWhereUniqueInput | Prisma.PlatformWhereUniqueInput[]
+  update?: Prisma.PlatformUpdateWithWhereUniqueWithoutGamesInput | Prisma.PlatformUpdateWithWhereUniqueWithoutGamesInput[]
+  updateMany?: Prisma.PlatformUpdateManyWithWhereWithoutGamesInput | Prisma.PlatformUpdateManyWithWhereWithoutGamesInput[]
+  deleteMany?: Prisma.PlatformScalarWhereInput | Prisma.PlatformScalarWhereInput[]
+}
+
+export type PlatformCreateNestedOneWithoutUserGamesInput = {
+  create?: Prisma.XOR<Prisma.PlatformCreateWithoutUserGamesInput, Prisma.PlatformUncheckedCreateWithoutUserGamesInput>
+  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutUserGamesInput
   connect?: Prisma.PlatformWhereUniqueInput
 }
 
-export type PlatformUpdateOneRequiredWithoutGamesNestedInput = {
-  create?: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput>
-  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutGamesInput
-  upsert?: Prisma.PlatformUpsertWithoutGamesInput
+export type PlatformUpdateOneWithoutUserGamesNestedInput = {
+  create?: Prisma.XOR<Prisma.PlatformCreateWithoutUserGamesInput, Prisma.PlatformUncheckedCreateWithoutUserGamesInput>
+  connectOrCreate?: Prisma.PlatformCreateOrConnectWithoutUserGamesInput
+  upsert?: Prisma.PlatformUpsertWithoutUserGamesInput
+  disconnect?: Prisma.PlatformWhereInput | boolean
+  delete?: Prisma.PlatformWhereInput | boolean
   connect?: Prisma.PlatformWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PlatformUpdateToOneWithWhereWithoutGamesInput, Prisma.PlatformUpdateWithoutGamesInput>, Prisma.PlatformUncheckedUpdateWithoutGamesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PlatformUpdateToOneWithWhereWithoutUserGamesInput, Prisma.PlatformUpdateWithoutUserGamesInput>, Prisma.PlatformUncheckedUpdateWithoutUserGamesInput>
 }
 
 export type PlatformCreateWithoutGamesInput = {
@@ -318,6 +375,7 @@ export type PlatformCreateWithoutGamesInput = {
   name: string
   icon: string
   color: string
+  userGames?: Prisma.UserGameCreateNestedManyWithoutPlatformInput
 }
 
 export type PlatformUncheckedCreateWithoutGamesInput = {
@@ -325,6 +383,7 @@ export type PlatformUncheckedCreateWithoutGamesInput = {
   name: string
   icon: string
   color: string
+  userGames?: Prisma.UserGameUncheckedCreateNestedManyWithoutPlatformInput
 }
 
 export type PlatformCreateOrConnectWithoutGamesInput = {
@@ -332,15 +391,78 @@ export type PlatformCreateOrConnectWithoutGamesInput = {
   create: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput>
 }
 
-export type PlatformUpsertWithoutGamesInput = {
+export type PlatformUpsertWithWhereUniqueWithoutGamesInput = {
+  where: Prisma.PlatformWhereUniqueInput
   update: Prisma.XOR<Prisma.PlatformUpdateWithoutGamesInput, Prisma.PlatformUncheckedUpdateWithoutGamesInput>
   create: Prisma.XOR<Prisma.PlatformCreateWithoutGamesInput, Prisma.PlatformUncheckedCreateWithoutGamesInput>
+}
+
+export type PlatformUpdateWithWhereUniqueWithoutGamesInput = {
+  where: Prisma.PlatformWhereUniqueInput
+  data: Prisma.XOR<Prisma.PlatformUpdateWithoutGamesInput, Prisma.PlatformUncheckedUpdateWithoutGamesInput>
+}
+
+export type PlatformUpdateManyWithWhereWithoutGamesInput = {
+  where: Prisma.PlatformScalarWhereInput
+  data: Prisma.XOR<Prisma.PlatformUpdateManyMutationInput, Prisma.PlatformUncheckedUpdateManyWithoutGamesInput>
+}
+
+export type PlatformScalarWhereInput = {
+  AND?: Prisma.PlatformScalarWhereInput | Prisma.PlatformScalarWhereInput[]
+  OR?: Prisma.PlatformScalarWhereInput[]
+  NOT?: Prisma.PlatformScalarWhereInput | Prisma.PlatformScalarWhereInput[]
+  id?: Prisma.StringFilter<"Platform"> | string
+  name?: Prisma.StringFilter<"Platform"> | string
+  icon?: Prisma.StringFilter<"Platform"> | string
+  color?: Prisma.StringFilter<"Platform"> | string
+}
+
+export type PlatformCreateWithoutUserGamesInput = {
+  id?: string
+  name: string
+  icon: string
+  color: string
+  games?: Prisma.GameCreateNestedManyWithoutPlatformsInput
+}
+
+export type PlatformUncheckedCreateWithoutUserGamesInput = {
+  id?: string
+  name: string
+  icon: string
+  color: string
+  games?: Prisma.GameUncheckedCreateNestedManyWithoutPlatformsInput
+}
+
+export type PlatformCreateOrConnectWithoutUserGamesInput = {
+  where: Prisma.PlatformWhereUniqueInput
+  create: Prisma.XOR<Prisma.PlatformCreateWithoutUserGamesInput, Prisma.PlatformUncheckedCreateWithoutUserGamesInput>
+}
+
+export type PlatformUpsertWithoutUserGamesInput = {
+  update: Prisma.XOR<Prisma.PlatformUpdateWithoutUserGamesInput, Prisma.PlatformUncheckedUpdateWithoutUserGamesInput>
+  create: Prisma.XOR<Prisma.PlatformCreateWithoutUserGamesInput, Prisma.PlatformUncheckedCreateWithoutUserGamesInput>
   where?: Prisma.PlatformWhereInput
 }
 
-export type PlatformUpdateToOneWithWhereWithoutGamesInput = {
+export type PlatformUpdateToOneWithWhereWithoutUserGamesInput = {
   where?: Prisma.PlatformWhereInput
-  data: Prisma.XOR<Prisma.PlatformUpdateWithoutGamesInput, Prisma.PlatformUncheckedUpdateWithoutGamesInput>
+  data: Prisma.XOR<Prisma.PlatformUpdateWithoutUserGamesInput, Prisma.PlatformUncheckedUpdateWithoutUserGamesInput>
+}
+
+export type PlatformUpdateWithoutUserGamesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.StringFieldUpdateOperationsInput | string
+  color?: Prisma.StringFieldUpdateOperationsInput | string
+  games?: Prisma.GameUpdateManyWithoutPlatformsNestedInput
+}
+
+export type PlatformUncheckedUpdateWithoutUserGamesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.StringFieldUpdateOperationsInput | string
+  color?: Prisma.StringFieldUpdateOperationsInput | string
+  games?: Prisma.GameUncheckedUpdateManyWithoutPlatformsNestedInput
 }
 
 export type PlatformUpdateWithoutGamesInput = {
@@ -348,9 +470,18 @@ export type PlatformUpdateWithoutGamesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   color?: Prisma.StringFieldUpdateOperationsInput | string
+  userGames?: Prisma.UserGameUpdateManyWithoutPlatformNestedInput
 }
 
 export type PlatformUncheckedUpdateWithoutGamesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  icon?: Prisma.StringFieldUpdateOperationsInput | string
+  color?: Prisma.StringFieldUpdateOperationsInput | string
+  userGames?: Prisma.UserGameUncheckedUpdateManyWithoutPlatformNestedInput
+}
+
+export type PlatformUncheckedUpdateManyWithoutGamesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
@@ -364,10 +495,12 @@ export type PlatformUncheckedUpdateWithoutGamesInput = {
 
 export type PlatformCountOutputType = {
   games: number
+  userGames: number
 }
 
 export type PlatformCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   games?: boolean | PlatformCountOutputTypeCountGamesArgs
+  userGames?: boolean | PlatformCountOutputTypeCountUserGamesArgs
 }
 
 /**
@@ -387,6 +520,13 @@ export type PlatformCountOutputTypeCountGamesArgs<ExtArgs extends runtime.Types.
   where?: Prisma.GameWhereInput
 }
 
+/**
+ * PlatformCountOutputType without action
+ */
+export type PlatformCountOutputTypeCountUserGamesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserGameWhereInput
+}
+
 
 export type PlatformSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -394,6 +534,7 @@ export type PlatformSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   icon?: boolean
   color?: boolean
   games?: boolean | Prisma.Platform$gamesArgs<ExtArgs>
+  userGames?: boolean | Prisma.Platform$userGamesArgs<ExtArgs>
   _count?: boolean | Prisma.PlatformCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["platform"]>
 
@@ -421,6 +562,7 @@ export type PlatformSelectScalar = {
 export type PlatformOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "icon" | "color", ExtArgs["result"]["platform"]>
 export type PlatformInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   games?: boolean | Prisma.Platform$gamesArgs<ExtArgs>
+  userGames?: boolean | Prisma.Platform$userGamesArgs<ExtArgs>
   _count?: boolean | Prisma.PlatformCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PlatformIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -430,6 +572,7 @@ export type $PlatformPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   name: "Platform"
   objects: {
     games: Prisma.$GamePayload<ExtArgs>[]
+    userGames: Prisma.$UserGamePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -831,6 +974,7 @@ readonly fields: PlatformFieldRefs;
 export interface Prisma__PlatformClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   games<T extends Prisma.Platform$gamesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Platform$gamesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userGames<T extends Prisma.Platform$userGamesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Platform$userGamesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserGamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1278,6 +1422,30 @@ export type Platform$gamesArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.GameScalarFieldEnum | Prisma.GameScalarFieldEnum[]
+}
+
+/**
+ * Platform.userGames
+ */
+export type Platform$userGamesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserGame
+   */
+  select?: Prisma.UserGameSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserGame
+   */
+  omit?: Prisma.UserGameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserGameInclude<ExtArgs> | null
+  where?: Prisma.UserGameWhereInput
+  orderBy?: Prisma.UserGameOrderByWithRelationInput | Prisma.UserGameOrderByWithRelationInput[]
+  cursor?: Prisma.UserGameWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserGameScalarFieldEnum | Prisma.UserGameScalarFieldEnum[]
 }
 
 /**

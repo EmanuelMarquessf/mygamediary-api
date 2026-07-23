@@ -13,28 +13,68 @@ generator client {
 }
 
 model Platform {
-  id String @id @default(uuid())
-  name  String @unique
-  icon String
+  id    String   @id @default(uuid())
+  name  String   @unique
+  icon  String
   color String
-  games Game[]
+
+  games       Game[]
+  userGames   UserGame[]
 }
 
 model Game {
-  id          String   @id @default(uuid())
-  title       String
-  status      String
-  rating      Int?
-  review      String?
-  createdAt   DateTime @default(now())
+  id              String   @id @default(uuid())
+  rawgId          Int?     @unique
+  title           String
+  description     String?  @db.Text
+  image           String?
+  backgroundImage String?
+  developer       String?
+  publisher       String?
+  releaseDate     DateTime?
+  averagePlaytime Int?
+  metacriticScore Int?
+  createdAt       DateTime  @default(now())
 
-  platformId    String
-  platform Platform @relation(fields: [platformId], references: [id])
+  // Relações
+  genres          Genre[] @relation("GameGenres")
+  platforms       Platform[]
+  library         UserGame[]
+}
+
+model Genre{
+  id  String @id @default(uuid())
+  name String @unique
+  slug String @unique
+
+  games Game[] @relation("GameGenres")
+}
+
+model User {
+  id        String     @id @default(uuid())
+  name      String
+  email     String     @unique
+
+  library   UserGame[]
 }
 
 
+model UserGame{
+  id String   @id @default(uuid())
+  status String
+  rating Int?
+  review String? @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  gameId String
+  game Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
 
+  platformId String?
+  platform   Platform? @relation(fields: [platformId], references: [id])
 
-
+  @@unique([userId, gameId])
+}

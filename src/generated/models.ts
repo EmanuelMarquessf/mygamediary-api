@@ -10,4 +10,7 @@
  */
 export type * from './models/Platform.js'
 export type * from './models/Game.js'
+export type * from './models/Genre.js'
+export type * from './models/User.js'
+export type * from './models/UserGame.js'
 export type * from './commonInputTypes.js'

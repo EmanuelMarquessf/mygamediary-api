@@ -18,20 +18,26 @@ export class GameController {
   async create(req: Request, res: Response) {
     try {
       console.log("entrou na controller")
-      const { title, platformId, status, rating, review } = req.body;
-      if (!title || !platformId || !status) {
+      const { title, description, image, backgroundImage, developer, publisher, releaseDate, genres, averagePlaytime, metacriticScore, platformId} = req.body;
+      if (!title) {
         return res.status(400).json({ error: 'Título, plataforma e status são obrigatórios!' });
       }
 
-      const newGame = await gameService.createGame({
-        title,
-        status,
-        rating,
-        review,
-        platformId
-      });
+      // const newGame = await gameService.createGame({
+      //   title,
+      //   description,
+      //   image,
+      //   backgroundImage,
+      //   developer,
+      //   publisher,
+      //   releaseDate,
+      //   genres,
+      //   averagePlaytime,
+      //   metacriticScore,
+      //   platformId
+      // });
 
-      return res.status(201).json(newGame);
+      //return res.status(201).json(newGame);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erro ao cadastrar jogo.' });

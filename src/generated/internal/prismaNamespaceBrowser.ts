@@ -52,7 +52,10 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Platform: 'Platform',
-  Game: 'Game'
+  Game: 'Game',
+  Genre: 'Genre',
+  User: 'User',
+  UserGame: 'UserGame'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -83,15 +86,53 @@ export type PlatformScalarFieldEnum = (typeof PlatformScalarFieldEnum)[keyof typ
 
 export const GameScalarFieldEnum = {
   id: 'id',
+  rawgId: 'rawgId',
   title: 'title',
+  description: 'description',
+  image: 'image',
+  backgroundImage: 'backgroundImage',
+  developer: 'developer',
+  publisher: 'publisher',
+  releaseDate: 'releaseDate',
+  averagePlaytime: 'averagePlaytime',
+  metacriticScore: 'metacriticScore',
+  createdAt: 'createdAt'
+} as const
+
+export type GameScalarFieldEnum = (typeof GameScalarFieldEnum)[keyof typeof GameScalarFieldEnum]
+
+
+export const GenreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+} as const
+
+export type GenreScalarFieldEnum = (typeof GenreScalarFieldEnum)[keyof typeof GenreScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserGameScalarFieldEnum = {
+  id: 'id',
   status: 'status',
   rating: 'rating',
   review: 'review',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  gameId: 'gameId',
   platformId: 'platformId'
 } as const
 
-export type GameScalarFieldEnum = (typeof GameScalarFieldEnum)[keyof typeof GameScalarFieldEnum]
+export type UserGameScalarFieldEnum = (typeof UserGameScalarFieldEnum)[keyof typeof UserGameScalarFieldEnum]
 
 
 export const SortOrder = {

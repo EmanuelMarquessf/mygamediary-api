@@ -27,3 +27,18 @@ export type Platform = Prisma.PlatformModel
  * 
  */
 export type Game = Prisma.GameModel
+/**
+ * Model Genre
+ * 
+ */
+export type Genre = Prisma.GenreModel
+/**
+ * Model User
+ * 
+ */
+export type User = Prisma.UserModel
+/**
+ * Model UserGame
+ * 
+ */
+export type UserGame = Prisma.UserGameModel
